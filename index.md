@@ -47,9 +47,35 @@ Restart VS Code and you should be all set.
 
 ### 4. Working with requirements.txt
 
-Use pip freeze to figure out which modules you need to add to requirements.txt.
+Use pip freeze to figure out which modules you need to add to requirements.txt or save it directly to file:
 
 ```
 pip freeze > requirements.txt
+```
+
+An example of configuration file requirements.txt is as follows.
+
+```
+###### Requirements without Version Specifiers ######`
+nose
+nose-cov
+beautifulsoup4
+
+###### Requirements with Version Specifiers ######`
+docopt == 0.6.1             # Version Matching. Must be version 0.6.1
+keyring >= 4.1.1            # Minimum version 4.1.1
+coverage != 3.5             # Version Exclusion. Anything except version 3.5
+Mopidy-Dirble ~= 1.1        # Compatible release. Same as >= 1.1, == 1.*
+```
+
+You can specify the version with `==`, `>`, `>=`, `<`, `<=`, etc. If the version is omitted, the latest version is installed. Two conditions can be specified with AND by separating them with a comma ,. In the following example, a version of 1.0 or more and 2.0 or less is installed.
+
+```
+package >= 1.0, <=2.0
+```
+
+Now you can copy or move the project files including the requirements.txt to another environment and install with it.
+
+```
 pip install -r requirements.txt
 ```
