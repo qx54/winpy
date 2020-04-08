@@ -44,3 +44,12 @@ In this case go to File -> Preferences -> Settings and in the search bar write _
 ```
 
 Restart VS Code and you should be all set.
+
+### 4. Working with requirements.txt
+
+Use pip freeze to figure out which modules you need to add to requirements.txt.
+
+```
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
