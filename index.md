@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+## Tutorial: Python on Windows with VS Code
 
-You can use the [editor on GitHub](https://github.com/qx54/winpy.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+### 1. Installing Visual Studio Code and Python on Windows
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Go to [VS Code download page](https://code.visualstudio.com/Download) to download and install the latest version. Don't go for the portable version in the ZIP archive or you'll run into problems.
 
-### Markdown
+Next install the latest stable executable Python installer for Windows from the [official Python download page](https://www.python.org/downloads/windows/).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### 2. Creating the first workspace
 
-```markdown
-Syntax highlighted code block
+After the Python interpretor has been installed, open a command prompt in Windows (type _cmd_ in the search and hit enter), create a project directory and start VS code from there:
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+mkdir project1
+cd project1
+code .
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+By starting Visual Studio Code in a folder, that folder becomes your _workspace_. VS Code stores settings that are specific to that workspace in .vscode/settings.json, which are separate from user settings that are stored globally.
 
-### Jekyll Themes
+Once Visual Studio Code has started, make sure to install the Python extension for VS Code from the Visual Studio Marketplace.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/qx54/winpy.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+For more details read [Getting Started with Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial).
 
-### Support or Contact
+### 3. Creating and activating a virtual environment
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Create a new terminal (Ctrl+Shift+") and type:
+
+```
+python -m venv .venv
+.\.venv\Scripts\activate.bat
+```
+
+You might get the following error:
+
+```
+File C:\Your\Path\project1\.venv\Scripts\activate.ps1 cannot be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+```
+
+In this case go to File -> Preferences -> Settings and in the search bar write _terminal.integrated.shellArgs.windows_. Then apply the following setting:
+
+```
+"terminal.integrated.shellArgs.windows": ["-ExecutionPolicy", "Bypass"]
+```
+
+Restart VS Code and you should be all set.
